@@ -1,6 +1,8 @@
-angular-parallax is a module for [AngularJS](http://angularjs.org/) to provide parallax-like functionality to DOM elements
+# Angular Parallax
 
-Inspired by [stellar.js](http://markdalgleish.com/projects/stellar.js/)
+**angular-parallax** is a module for [AngularJS](http://angularjs.org/) to provide parallax-like functionality for DOM elements
+
+Heavily inspired by [stellar.js](http://markdalgleish.com/projects/stellar.js/).
 
 Demos
 -----
