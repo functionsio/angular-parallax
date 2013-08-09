@@ -1,67 +1,6 @@
 <html ng-app="ngApp">
   <head>
-    <style type="text/css">
-    * {
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: helvetica, arial;
-    }
-
-    body:after {
-      content: url(images/animals.jpg) url(images/nature.jpg) url(images/cats.jpg) url(images/food.jpg) url(images/muther.jpg);
-      display: none;
-    }
-
-    h1 {
-      color: white;
-      height: 40px;
-      font-size: 74px;
-      font-weight: normal;
-      left: 0;
-      z-index: 1;
-      text-shadow: 0 2px 0 black, 0 0 10px black;
-    }
-    h1 a {
-      border-bottom: 1px solid white;
-      color: white;
-      display: inline-block;
-      line-height: 30px;
-      text-decoration: none;
-    }
-    .photo {
-      background-attachment: fixed;
-      background-position: 50% 0;
-      background-repeat: no-repeat;
-      height: 450px;
-      position: relative;
-    }
-    .photo span {
-      bottom: 0;
-      color: white;
-      display: block;
-      left: 50%;
-      margin-left: -640px;
-      font-size: 38px;
-      padding: 10px;
-      position: absolute;
-      text-shadow: 0 2px 0 black, 0 0 10px black;
-      width: 1280px;
-    }
-    .food {
-      background-image: url(images/food.jpg);
-    }
-    .cats {
-      background-image: url(images/cats.jpg);
-    }
-    .animals {
-      background-image: url(images/animals.jpg);
-    }
-    .nature {
-      background-image: url(images/nature.jpg);
-    }
-    </style>
+    <link href="styles/main.css" media="all" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <div ng-controller="ParallaxExampleCtrl">
@@ -74,55 +13,8 @@
       <!--<div parallax-slider class="" parallax-ratio="0.5">Autumn</div>-->
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
+    <script src="scripts/angular-parallax.js"></script>
     <script>
-      'use strict';
-      angular.module('angular-parallax', [
-      ]).directive('parallax', function($window) {
-        return {
-          restrict: 'A',
-          scope: {
-            parallaxRatio: '=',
-            parallaxVerticalOffset: '=',
-            parallaxHorizontalOffset: '=',
-          },
-          link: function($scope, elem, $attrs) {
-            var setPosition = function () {
-              var calcVal = $window.pageYOffset * $scope.parallaxRatio;
-              elem.css('left', $scope.parallaxHorizontalOffset);       
-              elem.css('top', (calcVal < $scope.parallaxVerticalOffset ? $scope.parallaxVerticalOffset : calcVal));       
-            }
-
-            setPosition();
-
-            if($scope.parallaxRatio) {
-              setPosition();
-              angular.element($window).bind("scroll", setPosition);
-            }
-          }  // link function
-        };
-      }).directive('parallaxBackground', function($window) {
-        return {
-          restrict: 'A',
-          transclude: true,
-          template: '<div ng-transclude>' +
-                    '</div>',
-          scope: {
-            parallaxRatio: '=',
-          },
-          link: function($scope, elem, attrs) {
-            var setPosition = function () {
-              elem.css('background-position-x', "50%");       
-              elem.css('background-position-y', (elem.prop('offsetTop') - $window.pageYOffset) * $scope.parallaxRatio + "px");       
-            }
-
-            if($scope.parallaxRatio) {
-              setPosition();
-              angular.element($window).bind("scroll", setPosition);
-            }
-          }  // link function
-        };
-      });
-
       var app = angular.module('ngApp', [
       'angular-parallax'
       ]);

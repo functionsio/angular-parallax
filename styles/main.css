@@ -1,0 +1,61 @@
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: helvetica, arial;
+    }
+
+    body:after {
+      content: url(../images/animals.jpg) url(../images/nature.jpg) url(../images/cats.jpg) url(../images/food.jpg) url(../images/muther.jpg);
+      display: none;
+    }
+
+    h1 {
+      color: white;
+      height: 40px;
+      font-size: 74px;
+      font-weight: normal;
+      left: 0;
+      z-index: 1;
+      text-shadow: 0 2px 0 black, 0 0 10px black;
+    }
+    h1 a {
+      border-bottom: 1px solid white;
+      color: white;
+      display: inline-block;
+      line-height: 30px;
+      text-decoration: none;
+    }
+    .photo {
+      background-attachment: fixed;
+      background-position: 50% 0;
+      background-repeat: no-repeat;
+      height: 450px;
+      position: relative;
+    }
+    .photo span {
+      bottom: 0;
+      color: white;
+      display: block;
+      left: 50%;
+      margin-left: -640px;
+      font-size: 38px;
+      padding: 10px;
+      position: absolute;
+      text-shadow: 0 2px 0 black, 0 0 10px black;
+      width: 1280px;
+    }
+    .food {
+      background-image: url(../images/food.jpg);
+    }
+    .cats {
+      background-image: url(../images/cats.jpg);
+    }
+    .animals {
+      background-image: url(../images/animals.jpg);
+    }
+    .nature {
+      background-image: url(../images/nature.jpg);
+    }
+
