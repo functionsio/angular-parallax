@@ -16,7 +16,7 @@ Getting Started
 ---------------
 
  * [View the source](http://brettdonohoo.github.com/angular-parallax)
- * Include the script tag on your page after the AngularJS and jQuery script tags
+ * Include the script tag on your page after the AngularJS tag
 
         <script type='text/javascript' src='path/to/angular.min.js'></script>
         <script type='text/javascript' src='path/to/angular-parallax.js'></script>
@@ -33,7 +33,7 @@ Getting Started
 Detailed Documentation
 ----------------------
 
-angular-parallax accepts several attributes to customize the behavior of the directive; detailed instructions coming soon
+**angular-parallax** accepts several attributes to customize the behavior of the directive; detailed instructions coming soon
 
 License
 -------
