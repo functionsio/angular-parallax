@@ -11,9 +11,11 @@ angular.module('angular-parallax', [
     },
     link: function($scope, elem, $attrs) {
       var setPosition = function () {
-        var calcVal = $window.pageYOffset * $scope.parallaxRatio;
         elem.css('left', $scope.parallaxHorizontalOffset);       
-        elem.css('top', (calcVal < $scope.parallaxVerticalOffset ? $scope.parallaxVerticalOffset : calcVal));       
+        
+        var calcValY = $window.pageYOffset * $scope.parallaxRatio;
+        if (calcValY <= $window.innerHeight)
+          elem.css('top', (calcValY < $scope.parallaxVerticalOffset ? $scope.parallaxVerticalOffset : calcValY));       
       }
 
       setPosition();
