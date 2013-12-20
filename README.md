@@ -7,7 +7,7 @@ Heavily inspired by [stellar.js](http://markdalgleish.com/projects/stellar.js/).
 Demos
 -----
 
-Check out the demo [here](http://brettdonohoo.github.com/projects/angular-parallax).
+Check out the demo [here](http://brettdonohoo.github.io/projects/angular-parallax).
 
 Version Numbers
 ---------------
@@ -15,7 +15,7 @@ Version Numbers
 Getting Started
 ---------------
 
- * [View the source](http://brettdonohoo.github.com/projects/angular-parallax)
+ * [View the source](http://brettdonohoo.github.io/projects/angular-parallax)
  * Include the script tag on your page after the AngularJS tag
 
         <script type='text/javascript' src='path/to/angular.min.js'></script>
