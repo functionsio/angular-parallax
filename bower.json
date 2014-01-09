@@ -1,0 +1,22 @@
+{
+  "name": "angular-parallax",
+  "version": "0.0.1",
+  "homepage": "https://github.com/brettdonohoo/angular-parallax",
+  "authors": [
+    "Brett Donohoo <brett.donohoo@gmail.com>"
+  ],
+  "description": "Angular.js module for parallax goodness.",
+  "keywords": [
+    "angular",
+    "parallax"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
