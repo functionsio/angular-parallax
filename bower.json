@@ -10,6 +10,7 @@
     "angular",
     "parallax"
   ],
+  "main": "./scripts/angular-parallax.js",
   "license": "MIT",
   "private": true,
   "ignore": [
