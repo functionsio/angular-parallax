@@ -11,11 +11,11 @@ angular.module('angular-parallax', [
     },
     link: function($scope, elem, $attrs) {
       var setPosition = function () {
-        elem.css('left', $scope.parallaxHorizontalOffset);       
-        
+        elem.css('left', $scope.parallaxHorizontalOffset + "px");
+
         var calcValY = $window.pageYOffset * $scope.parallaxRatio;
         if (calcValY <= $window.innerHeight)
-          elem.css('top', (calcValY < $scope.parallaxVerticalOffset ? $scope.parallaxVerticalOffset : calcValY));       
+          elem.css('top', (calcValY < $scope.parallaxVerticalOffset ? $scope.parallaxVerticalOffset : calcValY) + "px");
       }
 
       setPosition();
@@ -37,8 +37,8 @@ angular.module('angular-parallax', [
     },
     link: function($scope, elem, attrs) {
       var setPosition = function () {
-        elem.css('background-position-x', "50%");       
-        elem.css('background-position-y', (elem.prop('offsetTop') - $window.pageYOffset) * $scope.parallaxRatio + "px");       
+        elem.css('background-position-x', "50%");
+        elem.css('background-position-y', (elem.prop('offsetTop') - $window.pageYOffset) * $scope.parallaxRatio + "px");
       }
 
       if($scope.parallaxRatio) {
