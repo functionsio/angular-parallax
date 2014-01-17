@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angular-parallax', [
-]).directive('parallax', function($window) {
+]).directive('parallax', ['$window', function($window) {
   return {
     restrict: 'A',
     scope: {
@@ -11,11 +11,13 @@ angular.module('angular-parallax', [
     },
     link: function($scope, elem, $attrs) {
       var setPosition = function () {
-        elem.css('left', $scope.parallaxHorizontalOffset);       
-        
+        elem.css('left', $scope.parallaxHorizontalOffset + "px");
+
         var calcValY = $window.pageYOffset * $scope.parallaxRatio;
-        if (calcValY <= $window.innerHeight)
-          elem.css('top', (calcValY < $scope.parallaxVerticalOffset ? $scope.parallaxVerticalOffset : calcValY));       
+        if (calcValY <= $window.innerHeight) {
+          var top = (calcValY < $scope.parallaxVerticalOffset ? $scope.parallaxVerticalOffset : calcValY);
+          elem.css('top', top + "px");
+        }
       }
 
       setPosition();
@@ -26,7 +28,7 @@ angular.module('angular-parallax', [
       }
     }  // link function
   };
-}).directive('parallaxBackground', function($window) {
+}]).directive('parallaxBackground', ['$window', function($window) {
   return {
     restrict: 'A',
     transclude: true,
@@ -37,8 +39,8 @@ angular.module('angular-parallax', [
     },
     link: function($scope, elem, attrs) {
       var setPosition = function () {
-        elem.css('background-position-x', "50%");       
-        elem.css('background-position-y', (elem.prop('offsetTop') - $window.pageYOffset) * $scope.parallaxRatio + "px");       
+        elem.css('background-position-x', "50%");
+        elem.css('background-position-y', (elem.prop('offsetTop') - $window.pageYOffset) * $scope.parallaxRatio + "px");
       }
 
       if($scope.parallaxRatio) {
@@ -47,4 +49,4 @@ angular.module('angular-parallax', [
       }
     }  // link function
   };
-});
+}]);
