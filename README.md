@@ -1,3 +1,5 @@
+![AngularJS Parallax](https://raw.github.com/brettdonohoo/angular-parallax/master/images/ng-parallax.png)
+
 # Angular Parallax
 
 **angular-parallax** is an [AngularJS](http://angularjs.org/) module for providing parallax-like functionality for DOM elements
