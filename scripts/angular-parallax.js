@@ -11,20 +11,19 @@ angular.module('angular-parallax', [
     },
     link: function($scope, elem, $attrs) {
       var setPosition = function () {
+        // horizontal positioning
         elem.css('left', $scope.parallaxHorizontalOffset + "px");
 
-        var calcValY = $window.pageYOffset * $scope.parallaxRatio;
+        var calcValY = $window.pageYOffset * ($scope.parallaxRatio ? $scope.parallaxRatio : 1.1 );
         if (calcValY <= $window.innerHeight) {
-          var top = (calcValY < $scope.parallaxVerticalOffset ? $scope.parallaxVerticalOffset : calcValY);
-          elem.css('top', top + "px");
+          var topVal = (calcValY < $scope.parallaxVerticalOffset ? $scope.parallaxVerticalOffset : calcValY);
+          elem.css('top', topVal + "px");
         }
       };
 
       setPosition();
 
-      if($scope.parallaxRatio) {
-        angular.element($window).bind("scroll", setPosition);
-      }
+      angular.element($window).bind("scroll", setPosition);
     }  // link function
   };
 }]).directive('parallaxBackground', ['$window', function($window) {
@@ -33,18 +32,20 @@ angular.module('angular-parallax', [
     transclude: true,
     template: '<div ng-transclude></div>',
     scope: {
-      parallaxRatio: '=',
+      parallaxRatio: '@',
     },
     link: function($scope, elem, attrs) {
       var setPosition = function () {
+        // horizontal positioning
         elem.css('background-position-x', "50%");
-        elem.css('background-position-y', (elem.prop('offsetTop') - $window.pageYOffset) * $scope.parallaxRatio + "px");
-      }
 
-      if($scope.parallaxRatio) {
-        setPosition();
-        angular.element($window).bind("scroll", setPosition);
-      }
+        var calcValY = (elem.prop('offsetTop') - $window.pageYOffset) * ($scope.parallaxRatio ? $scope.parallaxRatio : 1.1 );
+        elem.css('background-position-y', calcValY + "px");
+      };
+
+      setPosition();
+
+      angular.element($window).bind("scroll", setPosition);
     }  // link function
   };
 }]);
