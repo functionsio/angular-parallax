@@ -5,9 +5,9 @@ angular.module('angular-parallax', [
   return {
     restrict: 'A',
     scope: {
-      parallaxRatio: '=',
-      parallaxVerticalOffset: '=',
-      parallaxHorizontalOffset: '=',
+      parallaxRatio: '@',
+      parallaxVerticalOffset: '@',
+      parallaxHorizontalOffset: '@',
     },
     link: function($scope, elem, $attrs) {
       var setPosition = function () {
@@ -18,12 +18,11 @@ angular.module('angular-parallax', [
           var top = (calcValY < $scope.parallaxVerticalOffset ? $scope.parallaxVerticalOffset : calcValY);
           elem.css('top', top + "px");
         }
-      }
+      };
 
       setPosition();
 
       if($scope.parallaxRatio) {
-        setPosition();
         angular.element($window).bind("scroll", setPosition);
       }
     }  // link function
@@ -32,8 +31,7 @@ angular.module('angular-parallax', [
   return {
     restrict: 'A',
     transclude: true,
-    template: '<div ng-transclude>' +
-              '</div>',
+    template: '<div ng-transclude></div>',
     scope: {
       parallaxRatio: '=',
     },
