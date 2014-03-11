@@ -36,11 +36,9 @@ angular.module('angular-parallax', [
     },
     link: function($scope, elem, attrs) {
       var setPosition = function () {
-        // horizontal positioning
-        elem.css('background-position-x', "50%");
-
         var calcValY = (elem.prop('offsetTop') - $window.pageYOffset) * ($scope.parallaxRatio ? $scope.parallaxRatio : 1.1 );
-        elem.css('background-position-y', calcValY + "px");
+        // horizontal positioning
+        elem.css('background-position', "50% " + calcValY + "px");
       };
 
       setPosition();
