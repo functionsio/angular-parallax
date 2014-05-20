@@ -41,7 +41,11 @@ angular.module('angular-parallax', [
         elem.css('background-position', "50% " + calcValY + "px");
       };
 
-      setPosition();
+      // set our initial position - fixes webkit background render bug
+      angular.element($window).bind('load', function(e) {
+        setPosition();
+        $scope.$apply();
+      });
 
       angular.element($window).bind("scroll", setPosition);
     }  // link function
