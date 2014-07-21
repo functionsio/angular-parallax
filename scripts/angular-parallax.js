@@ -24,6 +24,7 @@ angular.module('angular-parallax', [
       setPosition();
 
       angular.element($window).bind("scroll", setPosition);
+      angular.element($window).bind("touchmove", setPosition);
     }  // link function
   };
 }]).directive('parallaxBackground', ['$window', function($window) {
@@ -48,6 +49,7 @@ angular.module('angular-parallax', [
       });
 
       angular.element($window).bind("scroll", setPosition);
+      angular.element($window).bind("touchmove", setPosition);
     }  // link function
   };
 }]);
