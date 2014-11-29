@@ -34,7 +34,7 @@ angular.module('angular-parallax', [
     template: '<div ng-transclude></div>',
     scope: {
       parallaxRatio: '@',
-      parallaxPosition: '@'
+      parallaxBackgroundPosition: '@'
     },
     link: function($scope, elem, attrs) {
       var setPosition = function () {
