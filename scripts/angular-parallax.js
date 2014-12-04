@@ -46,8 +46,6 @@ angular.module('angular-parallax', [
         // horizontal positioning
         elem.css('background-position', "50% " + calcValY + "px");
       };
-      
-      setPosition();
 
       // set our initial position - fixes webkit background render bug
       angular.element($window).bind('load', function(e) {
