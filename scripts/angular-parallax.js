@@ -7,7 +7,7 @@ angular.module('angular-parallax', [
     scope: {
       parallaxRatio: '@',
       parallaxVerticalOffset: '@',
-      parallaxHorizontalOffset: '@',
+      parallaxHorizontalOffset: '@'
     },
     link: function($scope, elem, $attrs) {
       var setPosition = function () {
@@ -23,13 +23,25 @@ angular.module('angular-parallax', [
 
       setPosition();
 
-      angular.element($window).bind("scroll", setPosition);
-      angular.element($window).bind("touchmove", setPosition);
-
-      $scope.$on('$destroy', function() {
+      // Handle events
+      var bind = function() {
+        angular.element($window).bind("scroll", setPosition);
+        angular.element($window).bind("touchmove", setPosition);
+      };
+      var unbind = function() {
         angular.element($window).unbind("scroll", setPosition);
         angular.element($window).unbind("touchmove", setPosition);
+      };
+      $scope.$on('$destroy', function() {
+        unbind();
       });
+      attrs.$observe('parallaxBackground', function(val) {
+        if (val) {
+          bind()
+        } else {
+          unbind();
+        }
+      })
     }  // link function
   };
 }]).directive('parallaxBackground', ['$window', function($window) {
@@ -53,14 +65,28 @@ angular.module('angular-parallax', [
         $scope.$apply();
       });
 
-      angular.element($window).bind("scroll", setPosition);
-      angular.element($window).bind("touchmove", setPosition);
+      // Handle events
+      var bind = function() {
+        angular.element($window).bind("scroll", setPosition);
+        angular.element($window).bind("touchmove", setPosition);
+      };
 
       // Unbind events on
-      $scope.$on('$destroy', function() {
+      var unbind = function() {
+        console.log('$destroy');
         angular.element($window).unbind("scroll", setPosition);
         angular.element($window).unbind("touchmove", setPosition);
-      });          
+      }
+      $scope.$on('$destroy', function() {
+        unbind();
+      });
+      attrs.$observe('parallaxBackground', function(val) {
+        if (val) {
+          bind();
+        } else {
+          unbind();
+        }
+      })
     }  // link function
   };
 }]);
