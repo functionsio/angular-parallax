@@ -25,6 +25,11 @@ angular.module('angular-parallax', [
 
       angular.element($window).bind("scroll", setPosition);
       angular.element($window).bind("touchmove", setPosition);
+
+      $scope.$on('$destroy', function() {
+        angular.element($window).unbind("scroll", setPosition);
+        angular.element($window).unbind("touchmove", setPosition);
+      });
     }  // link function
   };
 }]).directive('parallaxBackground', ['$window', function($window) {
@@ -50,6 +55,12 @@ angular.module('angular-parallax', [
 
       angular.element($window).bind("scroll", setPosition);
       angular.element($window).bind("touchmove", setPosition);
+
+      // Unbind events on
+      $scope.$on('$destroy', function() {
+        angular.element($window).unbind("scroll", setPosition);
+        angular.element($window).unbind("touchmove", setPosition);
+      });          
     }  // link function
   };
 }]);
