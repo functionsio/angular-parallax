@@ -35,7 +35,7 @@ angular.module('angular-parallax', [
       $scope.$on('$destroy', function() {
         unbind();
       });
-      attrs.$observe('parallaxBackground', function(val) {
+      attrs.$observe('parallax', function(val) {
         if (val) {
           bind()
         } else {
@@ -73,7 +73,6 @@ angular.module('angular-parallax', [
 
       // Unbind events on
       var unbind = function() {
-        console.log('$destroy');
         angular.element($window).unbind("scroll", setPosition);
         angular.element($window).unbind("touchmove", setPosition);
       }
