@@ -17,7 +17,7 @@ angular.module('angular-parallax', [
         var calcValY = $window.pageYOffset * ($scope.parallaxRatio ? $scope.parallaxRatio : 1.1 );
         if (calcValY <= $window.innerHeight) {
           var topVal = (calcValY < $scope.parallaxVerticalOffset ? $scope.parallaxVerticalOffset : calcValY);
-          elem.css('top', topVal + "px");
+          elem.css('transform','translateY(' +topVal+ 'px)');
         }
       };
 
