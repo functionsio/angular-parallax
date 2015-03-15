@@ -18,12 +18,10 @@ h1 {
   z-index: 1;
   text-shadow: 0 2px 0 black, 0 0 10px black;
 }
-h1 a {
-  border-bottom: 1px solid white;
-  color: white;
-  display: inline-block;
-  line-height: 30px;
-  text-decoration: none;
+.parallax {
+  position:absolute;
+  left: 0;
+  top: 0;
 }
 .photo {
   background-attachment: fixed;

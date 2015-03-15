@@ -9,15 +9,12 @@ angular.module('angular-parallax', [
       parallaxVerticalOffset: '@',
       parallaxHorizontalOffset: '@',
     },
-    link: function($scope, elem, $attrs) {
+    link: function($scope, elem, attrs) {
       var setPosition = function () {
-        // horizontal positioning
-        elem.css('left', $scope.parallaxHorizontalOffset + "px");
-
         var calcValY = $window.pageYOffset * ($scope.parallaxRatio ? $scope.parallaxRatio : 1.1 );
         if (calcValY <= $window.innerHeight) {
           var topVal = (calcValY < $scope.parallaxVerticalOffset ? $scope.parallaxVerticalOffset : calcValY);
-          elem.css('transform','translateY(' +topVal+ 'px)');
+          elem.css('transform','translate(' + $scope.parallaxHorizontalOffset + 'px, ' +topVal+ 'px)');
         }
       };
 
