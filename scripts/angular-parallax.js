@@ -11,10 +11,12 @@ angular.module('angular-parallax', [
     },
     link: function($scope, elem, attrs) {
       var setPosition = function () {
+        if(!$scope.parallaxHorizontalOffset) $scope.parallaxHorizontalOffset = '0';
         var calcValY = $window.pageYOffset * ($scope.parallaxRatio ? $scope.parallaxRatio : 1.1 );
         if (calcValY <= $window.innerHeight) {
           var topVal = (calcValY < $scope.parallaxVerticalOffset ? $scope.parallaxVerticalOffset : calcValY);
-          elem.css('transform','translate(' + $scope.parallaxHorizontalOffset + 'px, ' +topVal+ 'px)');
+          var hozVal = ($scope.parallaxHorizontalOffset.indexOf("%") === -1 ? $scope.parallaxHorizontalOffset + 'px' : $scope.parallaxHorizontalOffset);
+          elem.css('transform', 'translate(' + hozVal + ', ' + topVal + 'px)');
         }
       };
 
