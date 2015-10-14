@@ -33,10 +33,11 @@ angular.module('angular-parallax', [
     template: '<div ng-transclude></div>',
     scope: {
       parallaxRatio: '@',
+      parallaxVerticalOffset: '@',
     },
     link: function($scope, elem, attrs) {
       var setPosition = function () {
-        var calcValY = (elem.prop('offsetTop') - $window.pageYOffset) * ($scope.parallaxRatio ? $scope.parallaxRatio : 1.1 )  - ( attrs.parallaxVerticalOffset || 0);
+        var calcValY = (elem.prop('offsetTop') - $window.pageYOffset) * ($scope.parallaxRatio ? $scope.parallaxRatio : 1.1) - ($scope.parallaxVerticalOffset || 0);
         // horizontal positioning
         elem.css('background-position', "50% " + calcValY + "px");
       };
