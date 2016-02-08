@@ -12,7 +12,7 @@ angular.module('angular-parallax', [
     },
     link: function($scope, elem, attrs) {
       var setPosition = function () {
-        if ($scope.parallaxIf === true) {
+        if ($scope.parallaxIf === undefined || $scope.parallaxIf === true) {
           if(!$scope.parallaxHorizontalOffset) $scope.parallaxHorizontalOffset = '0';
           var calcValY = $window.pageYOffset * ($scope.parallaxRatio ? $scope.parallaxRatio : 1.1 );
           if (calcValY <= $window.innerHeight) {
@@ -41,7 +41,7 @@ angular.module('angular-parallax', [
     },
     link: function($scope, elem, attrs) {
       var setPosition = function () {
-        if ($scope.parallaxIf === true) {
+        if ($scope.parallaxIf === undefined || $scope.parallaxIf === true) {
           var calcValY = (elem.prop('offsetTop') - $window.pageYOffset) * ($scope.parallaxRatio ? $scope.parallaxRatio : 1.1) - ($scope.parallaxVerticalOffset || 0);
           // horizontal positioning
           elem.css('background-position', "50% " + calcValY + "px");
